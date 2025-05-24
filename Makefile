@@ -1,13 +1,12 @@
 OBJECTS = $(patsubst src/%.c, build/%.o, $(wildcard src/*.c))
 
 build: $(OBJECTS)
-	gcc -c build/*.o -o ./lib/easeC.lib
+	mkdir -p lib
+	gcc -shared $(OBJECTS) -o lib/easeC.so
 
-build/string.o: src/string.c
-	gcc -c -Iheader src/string.c -o build/string.o
-
-build/random.o: src/random.c
-	gcc -c -Iheader src/random.c -o build/random.o
+build/%.o: src/%.c
+	mkdir -p build
+	gcc -fPIC -Wall -Wextra -Iheader -c $< -o $@
 
 clean:
-	rm build/*o ./lib/easeC
+	rm -rf build lib

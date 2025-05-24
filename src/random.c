@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void test(void)
+int randint(int start, int stop)
 {
-	puts("random");
+	return (rand() % (start - stop + 1)) + start;
 }
+
