@@ -2,10 +2,12 @@
 
 int main(void)
 {
-	srand(time(NULL));
-	for (int i = 0; i < 10; i++)
-	{
-		printf("%d\n", randint(50, 100));
-	}
-	return 0;
+    printf("Result: %g\n", eval("1+1*5"));
+    printf("Result: %g\n", eval("(1+1)*5"));
+    printf("Result: %g\n", eval("1/99"));
+    printf("Result: %g\n", eval("10*10"));
+	char output[65];
+	sha256("test", output);
+	puts(output);
+    return 0;
 }

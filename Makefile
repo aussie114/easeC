@@ -1,12 +1,16 @@
 OBJECTS = $(patsubst src/%.c, build/%.o, $(wildcard src/*.c))
 
-build: $(OBJECTS)
-	mkdir -p lib
-	gcc -shared $(OBJECTS) -o lib/easeC.so
+# Default target
+all: lib/libeaseC.a
 
+# Static library target
+lib/libeaseC.a: $(OBJECTS)
+	ar rcs $@ $(OBJECTS)
+
+# Compile object files
 build/%.o: src/%.c
-	mkdir -p build
-	gcc -fPIC -Wall -Wextra -Iheader -c $< -o $@
+	gcc -Wall -Wextra -Iheader -c $< -o $@
 
+# Clean build artifacts
 clean:
-	rm -rf build lib
+	rm -rf build/* lib/*

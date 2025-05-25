@@ -20,4 +20,10 @@ int str_isspace(char input[]);
 
 // Random
 int randint(int start, int stop);
+
+// Crypto
+void sha256(char * input, char output[65]);
+
+// Evaluate
+double eval(const char *expr);
 #endif
